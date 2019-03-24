@@ -29,6 +29,7 @@ public class HeavenlyBody {
             let raw = planet.childNode(withName: "planet-core", recursively: true) as! SCNNode
             raw.removeAllActions()
         }
+        StarNodeSystem.childNode(withName: "star", recursively: true)!.removeAllActions()
     }
 
     public func setSolarSystem(_ system: SCNNode) {

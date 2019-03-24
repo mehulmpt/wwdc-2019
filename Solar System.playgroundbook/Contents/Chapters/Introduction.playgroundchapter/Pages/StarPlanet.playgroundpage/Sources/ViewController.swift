@@ -178,6 +178,9 @@ public class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDeleg
 			if let hitResult = results.first {
 				if let activeTap = StaticData.getPlanet(name: activeButton.stringTag() as! String) {
 
+
+
+					
                     let name = activeTap["name"] as! String
 					var radius: Float
 					var mass: Float
@@ -187,6 +190,11 @@ public class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDeleg
 					} else {
                     	radius = Float(activeTap["saneRadius"] as! Double)
 						mass = Float(activeTap["saneMass"] as! Double)
+					}
+
+					if name != "sun" && Solar.getStarCount() == 0 {
+						AssesmentStatus.setFailMessage("**Uh oh**\nWe need a star in solar system before adding planet", "Click on Sun first and add it to your selected plane")
+						return
 					}
 
 

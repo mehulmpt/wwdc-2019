@@ -5,6 +5,7 @@ This book is my submission for WWDC Scholarship 2019. It allows you to learn int
 ## Credits
 1. Image Sprites: [FlatIcon](https://www.flaticon.com)
 2. 3D Textures: [Solar System Scope Textures](https://solarsystemscope.com/textures/)
+3. Sounds: [ZapSplat](https://www.zapsplat.com)
 3. And last but not the least, [Apple Documentation](https://developer.apple.com/documentation/)
 
 ## Points to consider

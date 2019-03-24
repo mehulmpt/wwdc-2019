@@ -18,11 +18,13 @@ public class ASHandler {
     public func setFailMessage(_ message: String, _ solution: String? = nil) {
 		work?.cancel()
         setStatusToNil()
+        playSound(name: "incorrect")
 		PlaygroundPage.current.assessmentStatus = .fail(hints: [message], solution: solution)
 	}
 
     public func setPassMessage(_ message: String, keepAlive: Bool = false) {
 		setStatusToNil()
+        playSound(name: "win")
 		PlaygroundPage.current.assessmentStatus = .pass(message: message)
         
         // cancel previous dispatcher

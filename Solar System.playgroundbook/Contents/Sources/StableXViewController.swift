@@ -19,6 +19,8 @@ public class StableXViewController: UIViewController, ARSCNViewDelegate, ARSessi
 	var activeButton: UIButton!
 	var planes = [ARPlaneAnchor: Plane]()
 
+	var buttonsLeftCount: Int! = 0
+
 	var activePlanets: [String]! = []
 
 	var testInProgress: Bool!
@@ -218,6 +220,8 @@ public class StableXViewController: UIViewController, ARSCNViewDelegate, ARSessi
 
 		let planetTray = ["sun"] + activePlanets
 		let controlTray = ["Test", "Reset"]
+
+		buttonsLeftCount = planetTray.count
 
 		planetStack = setupPlanetTray(tray: planetTray)
 		controlStack = setupControlTray(tray: controlTray)
@@ -426,8 +430,9 @@ public class StableXViewController: UIViewController, ARSCNViewDelegate, ARSessi
 
 					activeButton.removeFromSuperview()
 					activeButton = nil
+					buttonsLeftCount -= 1
 
-					if planetStack.count <= Solar.getBodyCount() {
+					if buttonsLeftCount == 0 {
 						// all bodies are added. ready for test
 						unFreezeTestButton()
 					}
