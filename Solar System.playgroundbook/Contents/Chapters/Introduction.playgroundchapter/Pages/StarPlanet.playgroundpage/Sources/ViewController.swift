@@ -137,6 +137,24 @@ public class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDeleg
 		Solar.setSolarSystem(SolarSystem)
 	}
 
+	public func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
+		if let name = contact.nodeA.name, let name2 = contact.nodeB.name {
+			Solar.freezePlanets()
+			if (name == "star" && name2 == "planet") || (name == "planet" && name2 == "star") {
+				// TODO: Add a sparkle effect/sound on collision
+				// Planet star collision
+				AssesmentStatus.setFailMessage("**Uh oh!**\n\nYou did a collision between star and planet! This should not happen! Reset the solar system and try!")						
+
+			} else if name == "planet" && name2 == "planet" {
+				// Planet planet collision
+				AssesmentStatus.setFailMessage("**Uh oh!**\n\nThis system is unstable as 2 planets could possibly collide. See for yourself which 2 planets collide, and reset your solar system to start again.")
+				
+			} else {
+				AssesmentStatus.setFailMessage("**Uh oh!**\n\nCollision between \(name) and \(name2)")
+			}
+		}
+	}
+
 	override public func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
