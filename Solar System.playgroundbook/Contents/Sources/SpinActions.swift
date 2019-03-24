@@ -114,7 +114,7 @@ public func FastRotation() -> SCNAction {
     return SCNAction.repeatForever(
         SCNAction.rotateBy(
             x: 0,
-            y: .pi,
+            y: .pi * 2,
             z: 0,
             duration: 1
         )
