@@ -216,6 +216,7 @@ public class HeavenlyBody {
         let position = SolarSystem.convertPosition(position, to: StarNodeSystem!)
         (planetSystem.childNode(withName: "planet", recursively: true) as? SCNNode)?.runAction(SCNAction.move(to: position, duration: 2))
         (planetSystem.childNode(withName: "planet-ring", recursively: true) as? SCNNode)?.runAction(SCNAction.move(to: position, duration: 2))
+        (planetSystem.childNode(withName: "planet-core", recursively: true) as! SCNNode).runAction(VerySlowRotation())
     }
 
     public func getOrbitalRadius(_ planet: SCNNode) -> Float {
