@@ -8,8 +8,9 @@ public func playSound(name: String) {
         try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)            
         try AVAudioSession.sharedInstance().setActive(true)
         player = try AVAudioPlayer(contentsOf: sound, fileTypeHint: AVFileType.mp3.rawValue)
-        guard let player = mediaPlayer else { return }
-        player.play()
+        if let player = mediaPlayer { 
+            player.play() 
+        }
     } catch let error {
 
     }
